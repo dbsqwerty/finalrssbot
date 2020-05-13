@@ -15,6 +15,10 @@ module.exports = async (bot, message)=>  {
    } 
 
 
+	 else if (message.content === `${prefix}help`) {
+		 message.channel.send('Go help yourself'+' '+message.author);
+   }
+
    
 
 
