@@ -7,8 +7,8 @@ module.exports = async (bot, message) => {
     try {
       message.channel.send('Boop')
     } catch (err) {
-      log.command.warning(`rssstats`, message.guild, err)
-      if (err.code !== 50013) message.channel.send(err.message).catch(err => log.command.warning('rssstats 1', message.guild, err))
+      log.command.warning(`beep`, message.guild, err)
+      if (err.code !== 50013) message.channel.send(err.message).catch(err => log.command.warning('beep', message.guild, err))
     }
   }
   

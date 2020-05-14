@@ -21,12 +21,11 @@ module.exports = async (bot, message) => {
             if (rest.tags.length>0 && rest.tags.join(', ').length<1024){
                 embed.addField('Tags', rest.tags.join(', '),true)
             }
-            //await embed.send();
-            message.channel.send(embed);
-        
+            await embed.send();
+            
     } catch (err) {
-      log.command.warning(`rssstats`, message.guild, err)
-      if (err.code !== 50013) message.channel.send(err.message).catch(err => log.command.warning('rssstats 1', message.guild, err))
+      log.command.warning(`urban`, message.guild, err)
+      if (err.code !== 50013) message.channel.send(err.message).catch(err => log.command.warning('urban', message.guild, err))
     }
   }
   

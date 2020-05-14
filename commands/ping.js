@@ -11,8 +11,8 @@ module.exports = async (bot, message) => {
         msg.edit("Ping: " + (Date.now() - msg.createdTimestamp)+ " ms\n this is not v. accurate") // Edits message with current timestamp minus timestamp of message
       	});
     } catch (err) {
-      log.command.warning(`rssstats`, message.guild, err)
-      if (err.code !== 50013) message.channel.send(err.message).catch(err => log.command.warning('rssstats 1', message.guild, err))
+      log.command.warning(`ping`, message.guild, err)
+      if (err.code !== 50013) message.channel.send(err.message).catch(err => log.command.warning('ping', message.guild, err))
     }
   }
   
