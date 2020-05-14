@@ -8,6 +8,8 @@ const storage = require('./storage.js')
 const MANAGE_CHANNELS_PERM = 'MANAGE_CHANNELS'
 const EMBED_LINKS_PERM = 'EMBED_LINKS'
 const MANAGE_ROLES_OR_PERMISSIONS_PERM = 'MANAGE_ROLES_OR_PERMISSIONS'
+const SEND_MESSAGES_PERM = 'SEND_MESSAGES'
+
 
 const PERMISSIONS = [
   'CREATE_INSTANT_INVITE',
@@ -18,7 +20,7 @@ const PERMISSIONS = [
   'MANAGE_GUILD',
   'ADD_REACTIONS', // add reactions to messages
   'READ_MESSAGES',
-   SEND_MESSAGES,
+   SEND_MESSAGES_PERM,
   'SEND_TTS_MESSAGES',
   'MANAGE_MESSAGES',
   EMBED_LINKS_PERM,
@@ -226,7 +228,7 @@ const list = {
   },
   help: {
     initLevel: 0,
-    userPerm: SEND_MESSAGES,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'Normal help, for noobs'
   },
   urban: {
