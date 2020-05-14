@@ -219,6 +219,16 @@ const list = {
     userPerm: MANAGE_CHANNELS_PERM,
     description: 'ping pong bois'
   },
+  beep: {
+    initLevel: 0,
+    userPerm: MANAGE_CHANNELS_PERM,
+    description: 'beep. '
+  },
+  help: {
+    initLevel: 0,
+    userPerm: MANAGE_CHANNELS_PERM,
+    description: 'Normal help, for noobs'
+  },
   rssversion: {
     initLevel: 0,
     userPerm: MANAGE_CHANNELS_PERM,
