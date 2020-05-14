@@ -229,6 +229,14 @@ const list = {
     userPerm: MANAGE_CHANNELS_PERM,
     description: 'Normal help, for noobs'
   },
+  urban: {
+    initLevel: 0,
+    userPerm: MANAGE_CHANNELS_PERM,
+    description: 'The best dictionary in the world kids',
+    args: {
+      'word': 'word to search for'      
+    }
+  },
   rssversion: {
     initLevel: 0,
     userPerm: MANAGE_CHANNELS_PERM,
