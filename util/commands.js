@@ -276,7 +276,8 @@ exports.run = async message => {
   let name = first.substr(prefix.length)
   console.log(first+'\n'+name+'\n'+prefix);
   if (!list.hasOwnProperty(name)) {
-    log.general.warning(`Failed to run ${name} - nonexistent command`, message.guild)
+    console.log(`Failed to run ${name} - nonexistent command`, message.guild)
+    message.channel.send("Help me")
     return 
   }
   const cmdInfo = list[name]
