@@ -241,6 +241,7 @@ exports.run = async message => {
   const guildPrefix = storage.prefixes[message.guild.id]
   const prefix = storage.prefixes[message.guild.id] || config.bot.prefix
   let name = first.substr(prefix.length)
+  console.log(first+name+prefix);
   if (!list.hasOwnProperty(name)) return log.general.warning(`Failed to run ${name} - nonexistent command`, message.guild)
 
   const cmdInfo = list[name]
@@ -255,7 +256,10 @@ exports.run = async message => {
     if (guildPrefix && !message.content.startsWith(guildPrefix)) {
       await message.channel.send(`Invalid command prefix. You are not using the prefix you set for your server (${guildPrefix}).`)
       return log.command.warning(`Ignoring command ${name} due to incorrect prefix (${prefix})`, guild)
-    } else if (!guildPrefix && !message.content.startsWith(config.bot.prefix)) return
+    } else if (!guildPrefix && !message.content.startsWith(config.bot.prefix)) {
+      message.reply("Wrong prefix used, pls use the correct prefix: " + config.bot.prefix);
+      return 
+    }
     log.command.info(`Used ${message.content}`, guild)
     if (cmdInfo.initLevel !== undefined && cmdInfo.initLevel > storage.initialized) {
       const m = await message.channel.send(`This command is disabled while booting up, please wait.`)
@@ -290,6 +294,7 @@ exports.run = async message => {
     await message.channel.send(`You do not have the permission \`${userPerm}\` to use this command.\n Contact your friendly bot devs/admin for help`)
   } catch (err) {
     log.command.warning('command.run', guild, err)
+    message.channel.send("there was an error, pls contact your friendly bot devs")
   }
 }
 
