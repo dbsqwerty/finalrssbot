@@ -4,6 +4,8 @@ const urban = require('relevant-urban');
 const MenuUtils = require('../structs/MenuUtils.js')
 const prefix = "!";
 let blacklisted =["cunt","chibai","cibai","marcus","quek","fuck","fucc","shit","bitch"] //lmao, add more for fun
+let other_prefix = ['$','%','^','&','*','-'];
+ 
 
 module.exports = async (bot, message)=>  {
 	
@@ -11,6 +13,8 @@ module.exports = async (bot, message)=>  {
 		if( blacklisted.some(word => message.content.includes(word)) ) {
      			message.delete(); 
 			message.reply("This word is banned by the server owner");
+		}else if (other_prefix.some(pre => message.content.startsWith(pre))) {
+			message.reply("Wrong prefix used, pls use the correct prefix: " + prefix);
     	}else if(message.content == "!ping"){ 
 			message.channel.send("Pinging ...") // Placeholder for pinging ... 
 			.then((msg) => { // Resolve promise
@@ -53,9 +57,6 @@ module.exports = async (bot, message)=>  {
 			}else {
 				message.channel.send('Threw '+respond()+ ' and '+respond()+ ' and '+respond()+' at '+user);
 			}
-		}else if (message.content.startsWith(`${prefix}search`)) {
-			
-
-}
+		}
 }
 
