@@ -21,7 +21,8 @@ module.exports = async (bot, message) => {
             if (rest.tags.length>0 && rest.tags.join(', ').length<1024){
                 embed.addField('Tags', rest.tags.join(', '),true)
             }
-            await embed.send();
+            //await embed.send();
+            message.channel.send(embed);
         
     } catch (err) {
       log.command.warning(`rssstats`, message.guild, err)
