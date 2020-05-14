@@ -247,6 +247,14 @@ const list = {
       'idk': 'idk'      
     }
   },
+  team: {
+    initLevel: 0,
+    userPerm: MANAGE_CHANNELS_PERM,
+    description: 'VexDB teams',
+    args: {
+      'number': 'team number'     
+    }
+  },
   rssversion: {
     initLevel: 0,
     userPerm: SEND_MESSAGES_PERM,
@@ -274,12 +282,8 @@ exports.run = async message => {
   const guildPrefix = storage.prefixes[message.guild.id]
   const prefix = storage.prefixes[message.guild.id] || config.bot.prefix
   let name = first.substr(prefix.length)
-  console.log(first+'\n'+name+'\n'+prefix);
-  if (!list.hasOwnProperty(name)) {
-    console.log(`Failed to run ${name} - nonexistent command`, message.guild)
-    message.channel.send("Help me")
-    return 
-  }
+  if (!list.hasOwnProperty(name)) return log.general.warning(`Failed to run ${name} - nonexistent command`, message.guild)
+
   const cmdInfo = list[name]
   const channel = message.channel
   const guild = bot.guilds.get(channel.guild.id)
