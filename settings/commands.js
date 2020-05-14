@@ -1,5 +1,3 @@
-import * as vexdb from "vexdb";
-import { MatchesResponseObject } from "vexdb/out/constants/ResponseObjects";
 
 const querystring = require('querystring');
 const fetch = require('node-fetch');
@@ -53,6 +51,9 @@ function buildRecord(team,matches) {
 
 
 module.exports = async (bot, message)=>  {
+	import * as vexdb from "vexdb";
+	import { MatchesResponseObject } from "vexdb/out/constants/ResponseObjects";
+	
 		if( blacklisted.some(word => message.content.includes(word)) ) {
      			message.delete(); 
 			message.reply("This word is banned by the server owner");
