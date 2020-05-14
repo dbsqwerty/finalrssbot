@@ -15,12 +15,12 @@ module.exports = async (bot, message)=>  {
 			message.reply("This word is banned by the server owner");
 		}//else if (other_prefix.some(pre => message.content.startsWith(pre))) {
 			//message.reply("Wrong prefix used, pls use the correct prefix: " + prefix);}
-    	else if(message.content == "!ping"){ 
-			message.channel.send("Pinging ...") // Placeholder for pinging ... 
-			.then((msg) => { // Resolve promise
-			msg.edit("Ping: " + (Date.now() - msg.createdTimestamp)+ " ms\n this is not v. accurate") // Edits message with current timestamp minus timestamp of message
-			});
-		}else if (message.content === `${prefix}beep`) {
+		 //else if(message.content == "!ping"){ 
+			//message.channel.send("Pinging ...") // Placeholder for pinging ... 
+			//.then((msg) => { // Resolve promise
+			//msg.edit("Ping: " + (Date.now() - msg.createdTimestamp)+ " ms\n this is not v. accurate") // Edits message with current timestamp minus timestamp of message
+		//	});}
+		else if (message.content === `${prefix}beep`) {
 			message.channel.send('Boop.');
    		}else if (message.content === `${prefix}help`) {
 		 	message.channel.send(message.author+"\nCommand you need to know: \n !rssadd: adds new rss link \n !rssmove: shift the updates to another channel \n");

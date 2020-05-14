@@ -214,6 +214,11 @@ const list = {
     userPerm: MANAGE_CHANNELS_PERM,
     description: 'Send the invite links for this bot.'
   },
+  ping: {
+    initLevel: 0,
+    userPerm: MANAGE_CHANNELS_PERM,
+    description: 'ping pong bois'
+  },
   rssversion: {
     initLevel: 0,
     userPerm: MANAGE_CHANNELS_PERM,
@@ -241,7 +246,7 @@ exports.run = async message => {
   const guildPrefix = storage.prefixes[message.guild.id]
   const prefix = storage.prefixes[message.guild.id] || config.bot.prefix
   let name = first.substr(prefix.length)
-  console.log(first+name+prefix);
+  console.log(first+'\n'+name+'\n'+prefix);
   if (!list.hasOwnProperty(name)) return log.general.warning(`Failed to run ${name} - nonexistent command`, message.guild)
 
   const cmdInfo = list[name]
@@ -278,7 +283,7 @@ exports.run = async message => {
 
     if (botPermitted) {
       log.command.warning(`Missing bot permission ${botPerm} for bot, blocked ${message.content}`, guild)
-      return await message.channel.send(`This command has been disabled due to missing bot permission \`${botPerm}\`.\n Contact your friendly bot devs/admin for help`)
+      return await message.channel.send(`This command has been disabled due to missing bot permission \`${botPerm}\`.\n Contact your friendly bot devs for help`)
     }
 
     // Check user perm
@@ -291,7 +296,7 @@ exports.run = async message => {
 
     if (serverPerm || channelPerm) return loadCommand(name)(bot, message, name)
     log.command.warning(`Missing user permissions for blocked ${message.content}`, message.guild, message.author)
-    await message.channel.send(`You do not have the permission \`${userPerm}\` to use this command.\n Contact your friendly bot devs/admin for help`)
+    await message.channel.send(`You do not have the permission \`${userPerm}\` to use this command.\n Contact your friendly bot devs for help`)
   } catch (err) {
     log.command.warning('command.run', guild, err)
     message.channel.send("there was an error, pls contact your friendly bot devs")
