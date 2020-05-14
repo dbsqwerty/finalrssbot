@@ -47,7 +47,7 @@ const list = {
   },
   rssadd: {
     initLevel: 2,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'Add an RSS feed to the channel with the default message. Multiple feeds can be added by separation with `>`.',
     args: {
       '<link>': 'Feed URL.'
@@ -63,7 +63,7 @@ const list = {
   rsslist: {
     initLevel: 1,
     botPerm: EMBED_LINKS_PERM,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'List all active feeds in server.'
   },
   rssmessage: {
@@ -86,7 +86,7 @@ const list = {
   rssfilters: {
     initLevel: 1,
     botPerm: EMBED_LINKS_PERM,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     action: 'Global Filter Addition/Removal',
     description: "Open a menu to add or remove global filters from a feed. Messages that do not have any of the words in any of your filters won't be sent to your Discord."
   },
@@ -106,7 +106,7 @@ const list = {
   rsstest: {
     initLevel: 1,
     botPerm: EMBED_LINKS_PERM,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     args: {
       'simple': 'Omit the test results and only send the message.'
     },
@@ -218,12 +218,12 @@ const list = {
   },
   ping: {
     initLevel: 0,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'ping pong bois'
   },
   beep: {
     initLevel: 0,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'beep. '
   },
   help: {
@@ -249,7 +249,7 @@ const list = {
   },
   rssversion: {
     initLevel: 0,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'Show version of the bot.'
   }
 }
@@ -275,8 +275,10 @@ exports.run = async message => {
   const prefix = storage.prefixes[message.guild.id] || config.bot.prefix
   let name = first.substr(prefix.length)
   console.log(first+'\n'+name+'\n'+prefix);
-  if (!list.hasOwnProperty(name)) return log.general.warning(`Failed to run ${name} - nonexistent command`, message.guild)
-
+  if (!list.hasOwnProperty(name)) {
+    log.general.warning(`Failed to run ${name} - nonexistent command`, message.guild)
+    return 
+  }
   const cmdInfo = list[name]
   const channel = message.channel
   const guild = bot.guilds.get(channel.guild.id)
