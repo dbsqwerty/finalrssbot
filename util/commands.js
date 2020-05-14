@@ -304,5 +304,5 @@ exports.runController = message => {
   const command = first.substr(prefix.length)
   if (fs.existsSync(path.join(__dirname, '..', 'commands', 'controller', `${command}.js`))) {
     loadCCommand(command)[bot.shard && bot.shard.count > 0 ? 'sharded' : 'normal'](bot, message)
-  } else{message.channel.send("error, pls contact your friendly bot devs for help")}
+  } 
 }
