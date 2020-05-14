@@ -1,6 +1,7 @@
-const log = require('../util/logger.js')
+const log = require('../../util/logger.js')
 
 module.exports = (bot, message, command) => {
+  message.delete();
   let msg = `add: !add <user> <role> \n\n rm: !rm <user> <role> \n\n`
   
   const helpMessage = msg + '\nCredits: Sean'
