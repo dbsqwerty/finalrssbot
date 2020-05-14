@@ -18,7 +18,7 @@ const PERMISSIONS = [
   'MANAGE_GUILD',
   'ADD_REACTIONS', // add reactions to messages
   'READ_MESSAGES',
-  'SEND_MESSAGES',
+   SEND_MESSAGES,
   'SEND_TTS_MESSAGES',
   'MANAGE_MESSAGES',
   EMBED_LINKS_PERM,
@@ -226,7 +226,7 @@ const list = {
   },
   help: {
     initLevel: 0,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES,
     description: 'Normal help, for noobs'
   },
   urban: {
@@ -235,6 +235,14 @@ const list = {
     description: 'The best dictionary in the world kids',
     args: {
       'word': 'word to search for'      
+    }
+  },
+  yeet: {
+    initLevel: 0,
+    userPerm: MANAGE_CHANNELS_PERM,
+    description: 'This command was added by some random dude, no idea what it is',
+    args: {
+      'idk': 'idk'      
     }
   },
   rssversion: {
