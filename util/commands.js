@@ -218,10 +218,6 @@ const list = {
     initLevel: 0,
     userPerm: MANAGE_CHANNELS_PERM,
     description: 'Show version of the bot.'
-  },
-  rsspatron: {
-    initLevel: 2,
-    userPerm: MANAGE_CHANNELS_PERM
   }
 }
 // Check for aliases
@@ -278,7 +274,7 @@ exports.run = async message => {
 
     if (botPermitted) {
       log.command.warning(`Missing bot permission ${botPerm} for bot, blocked ${message.content}`, guild)
-      return await message.channel.send(`This command has been disabled due to missing bot permission \`${botPerm}\`.`)
+      return await message.channel.send(`This command has been disabled due to missing bot permission \`${botPerm}\`.\n Contact your friendly bot devs/admin for help`)
     }
 
     // Check user perm
@@ -291,7 +287,7 @@ exports.run = async message => {
 
     if (serverPerm || channelPerm) return loadCommand(name)(bot, message, name)
     log.command.warning(`Missing user permissions for blocked ${message.content}`, message.guild, message.author)
-    await message.channel.send(`You do not have the permission \`${userPerm}\` to use this command.`)
+    await message.channel.send(`You do not have the permission \`${userPerm}\` to use this command.\n Contact your friendly bot devs/admin for help`)
   } catch (err) {
     log.command.warning('command.run', guild, err)
   }
@@ -302,10 +298,11 @@ exports.runController = message => {
   const first = message.content.split(' ')[0]
   const prefix = storage.prefixes[message.guild.id] || config.bot.prefix
   if (!message.content.startsWith(prefix)) {
+    message.reply("Pls Use the correct Prefix thank.\n" + config.bot.prefix)
     return
   }
   const command = first.substr(prefix.length)
   if (fs.existsSync(path.join(__dirname, '..', 'commands', 'controller', `${command}.js`))) {
     loadCCommand(command)[bot.shard && bot.shard.count > 0 ? 'sharded' : 'normal'](bot, message)
-  }
+  } else{message.channel.send("error, pls contact your friendly bot devs for help")}
 }
