@@ -247,15 +247,7 @@ const list = {
       'idk': 'idk'      
     }
   },
-  team: {
-    initLevel: 0,
-    userPerm: MANAGE_CHANNELS_PERM,
-    description: 'VexDB teams',
-    args: {
-      'number': 'team number'     
-    }
-  },
-  rssversion: {
+   rssversion: {
     initLevel: 0,
     userPerm: SEND_MESSAGES_PERM,
     description: 'Show version of the bot.'
