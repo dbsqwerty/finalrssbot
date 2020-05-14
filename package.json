@@ -28,7 +28,10 @@
     "mongoose": "^5.6.4",
     "node-fetch": "^2.6.0",
     "redis": "^2.8.0",
+    "relevant-urban": "^2.0.0",
     "request": "^2.88.0",
+    "urban-dictionary": "^2.2.1",
+    "very-urban": "^1.0.2",
     "youtube-search": "^1.1.4"
   },
   "repository": {
