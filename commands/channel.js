@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const {google} = require('googleapis');
+const config = require('../config.js')
 
 const MenuUtils = require('../structs/MenuUtils.js')
 const log = require('../util/logger.js')
