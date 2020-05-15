@@ -5,7 +5,6 @@ const dbOps = require('../util/dbOps.js')
 const config = require('../config.js')
 const request = require('request');
 const uuidv4 = require('uuid/v4');
-const config = require('../config.js');
 //check
 
 var subscriptionKey = config.advanced.KEY;
