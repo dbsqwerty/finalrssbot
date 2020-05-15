@@ -6,7 +6,7 @@ const config = require('../config.js')
 const request = require('request');
 const uuidv4 = require('uuid/v4');
 //check
-
+var region = config.advanced.region;
 var subscriptionKey = config.advanced.KEY;
 var endpoint_var = 'TRANSLATOR_TEXT_ENDPOINT';
 var endpoint = config.advanced.endpoint;
@@ -21,6 +21,7 @@ let options = {
   },
   headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Ocp-Apim-Subscription-Region' : region,
     'Content-type': 'application/json',
     'X-ClientTraceId': uuidv4().toString()
   },
