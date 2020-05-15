@@ -77,8 +77,12 @@ module.exports = async (bot, message) => {
 
     let link = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
     
-       
-    if (rssList[x].link === link && message.channel.id === rssList[x].channel) return message.channel.send("Link already is added")
+    for (var x in rssList) {
+        if (rssList[x].link === link && message.channel.id === rssList[x].channel) {
+            message.channel.send("Link already is added")
+            return
+        }
+      }
         
     
 
