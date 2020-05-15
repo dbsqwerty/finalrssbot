@@ -3,6 +3,7 @@ const log = require('../util/logger.js')
 const moment = require('moment')
 const dbOps = require('../util/dbOps.js')
 const Discord = require('discord.js');
+const fetch = require('node-fetch');
 
 
 module.exports = async (bot, message) => {

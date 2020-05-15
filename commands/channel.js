@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const {google} = require('googleapis');
 const config = require('../config.js')
+const loadCommand = file => require(`${file}.js`)
 
 const MenuUtils = require('../structs/MenuUtils.js')
 const log = require('../util/logger.js')
@@ -57,7 +58,10 @@ module.exports = async (bot, message) => {
         
         function addYtFeed(channelId,message){
             //console.log(channelId);
-            message.channel.send(`<@${message.author.id}> Added https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+            //message.channel.send(`<@${message.author.id}> Added https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+            let file = 'rssadd'
+            
+            loadCommand(file)(bot, `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`)
         }
 
 
