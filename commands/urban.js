@@ -8,9 +8,10 @@ const fetch = require('node-fetch');
 
 module.exports = async (bot, message) => {
     try {
-        if (message.content.split(' ').length === 1) return await message.channel.send(`Pls enter a search term`)
+		const query =message.content.split(" ").slice(1).join(" ");
 
-        const query =message.content.split(" ").slice(1).join(" ");
+        if (!query) return await message.channel.send(`Pls enter a search term`)
+
         const { list } = await fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(response => response.json());
 
 		if (!list.length) {
