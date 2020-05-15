@@ -4,6 +4,7 @@ const moment = require('moment')
 const dbOps = require('../util/dbOps.js')
 const urban = require('relevant-urban');
 const Discord = require('discord.js');
+const trim = (str, max) => str.length > max ? `${str.slice(0, max - 3)}...` : str;
 
 
 module.exports = async (bot, message) => {
