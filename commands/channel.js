@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const {google} = require('googleapis');
 const config = require('../config.js')
-const loadCommand = file => require(`${file}.js`)
 
 const MenuUtils = require('../structs/MenuUtils.js')
 const log = require('../util/logger.js')
@@ -15,7 +14,8 @@ const youtube = google.youtube({
 module.exports = async (bot, message) => {
     try {
         const origMatch =(/.*youtube\.com\/channel\/(.+)/.exec(message.content)); //Regex for match both channel and user: (/.*youtube\.com\/.+\/(.+)/.exec(message.content));
-        
+        let query = message.content.split(/ (.+)/)[1];
+        if (!query){return message.channel.send("Error, no search term, not wasting dem api on you bitch")}
         if(origMatch != null){
             addYtFeed(origMatch[1],message);
             return;
@@ -23,7 +23,7 @@ module.exports = async (bot, message) => {
         youtube.search.list({
             type: 'channel',
             part: 'id,snippet',
-            q: message.content.split(/ (.+)/)[1],
+            q: query,
         }).then(res => {
             const numToEmoji = [':one:',':two:',':three:',':four:',':five:']
             var msgEmbed = new Discord.RichEmbed()
@@ -57,9 +57,7 @@ module.exports = async (bot, message) => {
         
         function addYtFeed(channelId,message){
             //console.log(channelId);
-             let name = 'rssadd'
-             let message = `!rssadd https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-            loadCommand(name)(bot, message)
+            message.channel.send(`<@${message.author.id}> Added https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
         }
 
 
