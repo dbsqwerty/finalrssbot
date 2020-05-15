@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const {google} = require('googleapis');
-const config = require('../config.js')
 
 const MenuUtils = require('../structs/MenuUtils.js')
 const log = require('../util/logger.js')
@@ -25,7 +24,7 @@ module.exports = async (bot, message) => {
             q: message.content.split(/ (.+)/)[1],
         }).then(res => {
             const numToEmoji = [':one:',':two:',':three:',':four:',':five:']
-            var msgEmbed = new Discord.MessageEmbed()
+            var msgEmbed = new Discord.RichEmbed()
             .setColor(3447003)
             .setTitle('Chanels Found')
             .setDescription('Enter the corresponding channel number')
@@ -58,7 +57,7 @@ module.exports = async (bot, message) => {
             //console.log(channelId);
             message.channel.send(`<@${message.author.id}> Added https://youtube.com/channel/${channelId}`);
         }
-}
+
 
 
 
@@ -67,7 +66,7 @@ module.exports = async (bot, message) => {
 
     //adding dem channel into dem feeeeds for dem leeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeks
     
-    catch (err) {
+    } catch (err) {
       log.command.warning(`channel`, message.guild, err)
       if (err.code !== 50013) message.channel.send(err.message).catch(err => log.command.warning('channel', message.guild, err))
     }
