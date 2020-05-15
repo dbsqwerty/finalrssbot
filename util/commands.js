@@ -45,6 +45,7 @@ const list = {
     initLevel: 0,
     userPerm: MANAGE_CHANNELS_PERM
   },
+
   rssadd: {
     initLevel: 2,
     userPerm: SEND_MESSAGES_PERM,
@@ -233,7 +234,7 @@ const list = {
   },
   urban: {
     initLevel: 0,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'The best dictionary in the world kids',
     args: {
       'word': 'word to search for'      
@@ -241,10 +242,27 @@ const list = {
   },
   yeet: {
     initLevel: 0,
-    userPerm: MANAGE_CHANNELS_PERM,
+    userPerm: SEND_MESSAGES_PERM,
     description: 'This command was added by some random dude, no idea what it is',
     args: {
       'idk': 'idk'      
+    }
+  },
+  search: {
+    initLevel: 0,
+    userPerm: SEND_MESSAGES_PERM,
+    description: 'Youtube Search (videos)',
+    args: {
+      'Date': 'optional, add date published filter',
+      'Search': 'search keyword'   
+    }
+  },
+  channel: {
+    initLevel: 0,
+    userPerm: SEND_MESSAGES_PERM,
+    description: 'Youtube Channel Search ',
+    args: {
+      'Search': 'search keyword'   
     }
   },
    rssversion: {
@@ -317,7 +335,8 @@ exports.run = async message => {
     const member = await message.guild.fetchMember(message.author)
     if (!message.member) message.member = member
 
-    if (!userPerm || !PERMISSIONS.includes(userPerm) || config.bot.controllerIds.includes(message.author.id)) return loadCommand(name)(bot, message, name)
+    if (!userPerm || !PERMISSIONS.includes(userPerm) || config.bot.controllerIds.includes(message.author.id)) return loadCommand(name)(bot, message, name) 
+    console.log(message + "\n"+ name)
     const serverPerm = member.hasPermission(userPerm)
     const channelPerm = member.permissionsIn(channel).has(userPerm)
 
