@@ -20,7 +20,7 @@ module.exports = async (bot, message) => {
 			const embed = new Discord.RichEmbed()
 			.setColor('#EFFF00')
 			.setTitle(rest.word)
-			.setURL(rest.permalink)
+			.setURL(rest.urbanURL)
 			.addField('Definition', trim(rest.definition, 1024))
 			.addField('Example', trim(rest.example, 1024))
 			.addField('Rating', `${rest.thumbs_up} thumbs up. ${rest.thumbs_down} thumbs down.`);
