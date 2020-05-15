@@ -91,6 +91,7 @@ module.exports = async (bot, message) => {
         if (addedLink) link = addedLink
         channelTracker.remove(message.channel.id)
         log.command.info(`Added ${link}`, message.guild)
+        message.channel.send(`https://youtube.com/channel/${channelId} was added to the channel. Thanks for using this service.`)
     } catch (err) {
         log.command.warning(`Unable to add ${link}`, message.guild, err)
     }

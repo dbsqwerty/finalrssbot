@@ -4,8 +4,6 @@ const urban = require('relevant-urban');
 const MenuUtils = require('../structs/MenuUtils.js')
 const prefix = "!";
 let blacklisted =["cunt","chibai","cibai","marcus","quek","fuck","fucc","shit","bitch"] //lmao, add more for fun
-let other_prefix = ['$','%','^','&','*','-'];
-const loadCommand = file => require(`../commands/${file}.js`)
 
 module.exports = async (bot, message)=>  {
 	
@@ -14,9 +12,5 @@ module.exports = async (bot, message)=>  {
      			message.delete(); 
 			message.reply("This word is banned by the server owner");
 			
-		}else if (message.content === `${prefix}test`) {
-			loadCommand(rssadd)(bot, message, name)
-   		}
-	
-	}
+		}}
 

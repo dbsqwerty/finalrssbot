@@ -7,7 +7,6 @@ const serverLimit = require('../util/serverLimit.js')
 
 module.exports = async (bot, message) => {
   try {
-    console.log(message)
     const [ guildRss, serverLimitData ] = await Promise.all([ dbOps.guildRss.get(message.guild.id), serverLimit(message.guild.id) ])
     const rssList = guildRss && guildRss.sources ? guildRss.sources : {}
     const vipUser = serverLimitData.vipUser

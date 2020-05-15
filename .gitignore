@@ -1,5 +1,5 @@
 config.json
-settings/commands.js
+
 node_modules/
 *.lock
 
