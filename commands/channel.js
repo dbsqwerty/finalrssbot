@@ -91,13 +91,8 @@ module.exports = async (bot, message) => {
         if (addedLink) link = addedLink
         channelTracker.remove(message.channel.id)
         log.command.info(`Added ${link}`, message.guild)
-        dbOps.failedLinks.reset(link).catch(err => log.general.error(`Unable to reset failed status for link ${link} after rssadd`, err))
-        passedAddLinks.push(link)
-        ++checkedSoFar
     } catch (err) {
-        let channelErrMsg = err.message
         log.command.warning(`Unable to add ${link}`, message.guild, err)
-        failedAddLinks[link] = channelErrMsg
     }
     }
 
