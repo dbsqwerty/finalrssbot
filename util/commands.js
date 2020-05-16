@@ -67,6 +67,11 @@ const list = {
     userPerm: SEND_MESSAGES_PERM,
     description: 'List all active feeds in server.'
   },
+  list: {
+    initLevel: 1,
+    botPerm: EMBED_LINKS_PERM,
+    description: 'List all active feeds in channel'
+  },
   rssmessage: {
     initLevel: 1,
     botPerm: EMBED_LINKS_PERM,

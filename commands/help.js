@@ -10,7 +10,7 @@ var region = config.advanced.region;
 var subscriptionKey = config.advanced.KEY;
 var endpoint_var = 'TRANSLATOR_TEXT_ENDPOINT';
 var endpoint = config.advanced.endpoint;
-var message = "\nCommand you need to know: \n !rssadd: adds new rss link \n !rssmove: shift the updates to another channel \n\n!search: searches for youtube videos\n\n!channel: searches for youtube channels\n\nIf you dont see any response, wait for 5 minutes or you prob typed it wrongly. Thats on you, not the devs."
+var message = "\nCommand you need to know: \n !rssadd: adds new rss link \n !rssmove: shift the updates to another channel \n\n!search: searches for youtube videos\n\n!channel: searches for youtube channels\n\n!list: lists out all feeds for said channel \n\nIf you dont see any response, wait for 5 minutes or you prob typed it wrongly. Thats on you, not the devs."
 let options = {
   method: 'POST',
   baseUrl: endpoint,
@@ -39,7 +39,7 @@ module.exports = async (bot, message) => {
             message.channel.send(message.author+JSON.stringify(body, null, 4));
           });
         } else{
-          message.channel.send(message.author+"\nCommand you need to know: \n !rssadd: adds new rss link \n !rssmove: shift the updates to another channel \n\n!search: searches for youtube videos\n\n!channel: searches for youtube channels\n\nIf you dont see any response, wait for 5 minutes or you prob typed it wrongly. Thats on you, not the devs.");
+          message.channel.send(message.author+" "+message);
      
     }
         } catch (err) {
