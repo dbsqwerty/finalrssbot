@@ -1,5 +1,5 @@
 const dbOps = require('../util/dbOps.js')
-const FeedSelector = require('../structs/FeedSelector.js')
+const FeedSelector = require('../structs/testing.js')
 const log = require('../util/logger.js')
 const MenuUtils = require('../structs/MenuUtils.js')
 
