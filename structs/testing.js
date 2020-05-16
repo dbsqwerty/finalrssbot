@@ -52,20 +52,7 @@ class FeedSelector extends Menu {
       if (message.channel.id !== source.channel && !this.globalSelect) continue
       let o = { link: source.link, rssName: rssName, title: source.title }
 
-      if (OPTIONS_TEXTS[miscOption]) {
-        const statusText = OPTIONS_TEXTS[miscOption].status
-        let decision = ''
 
-        const globalSetting = config.feeds[miscOption]
-        decision = globalSetting ? `${statusText} Enabled\n` : `${statusText} Disabled\n`
-        const specificSetting = source[miscOption]
-        decision = typeof specificSetting !== 'boolean' ? decision : specificSetting === true ? `${statusText} Enabled\n` : `${statusText} Disabled\n`
-
-        o.miscOption = decision
-      }
-      if (this.globalSelect) o.channel = source.channel
-      this._currentRSSList.push(o)
-    }
 
     if (this._currentRSSList.length === 0) {
       this.text = 'No feeds assigned to this channel.'
