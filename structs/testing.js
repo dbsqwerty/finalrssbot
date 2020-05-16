@@ -52,7 +52,9 @@ class FeedSelector extends Menu {
       if (message.channel.id !== source.channel && !this.globalSelect) continue
       let o = { link: source.link, rssName: rssName, title: source.title }
 
-
+      if (this.globalSelect) o.channel = source.channel
+      this._currentRSSList.push(o)
+    }
 
     if (this._currentRSSList.length === 0) {
       this.text = 'No feeds assigned to this channel.'
