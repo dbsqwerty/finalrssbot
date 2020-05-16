@@ -19,6 +19,8 @@ module.exports = async (bot, message, command, role) => {
   try {
     const guildRss = await dbOps.guildRss.get(message.guild.id)
     const feedSelector = new FeedSelector(message, feedSelectorFn, { command: command }, guildRss)
+    const data = await new MenuUtils.MenuSeries(message, [feedSelector]).start()
+
 
   } catch (err) {
     log.command.warning(`list`, message.guild, err)
