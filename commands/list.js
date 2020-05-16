@@ -1,6 +1,7 @@
 const dbOps = require('../util/dbOps.js')
 const FeedSelector = require('../structs/FeedSelector.js')
 const log = require('../util/logger.js')
+const MenuUtils = require('../structs/MenuUtils.js')
 
 async function feedSelectorFn (m, data) {
   const { guildRss, rssName } = data
