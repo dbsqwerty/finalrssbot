@@ -65,6 +65,7 @@ module.exports = async (bot, message) => {
     }
   }
   async function addYtFeed(channelId,message){
+    
     //console.log(channelId);
     //message.channel.send(`<@${message.author.id}> Added https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
     

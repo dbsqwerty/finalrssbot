@@ -35,11 +35,12 @@ module.exports = async (bot, message) => {
       let array1 = message.content.split(" ");
         var language;
         if (array1[1]){
-          message.channel.send(message.author+"\nCommand you need to know: \n !rssadd: adds new rss link \n !rssmove: shift the updates to another channel \n\n!search: searches for youtube videos\n\n!channel: searches for youtube channels\n\nIf you dont see any response, wait for 5 minutes or you prob typed it wrongly. Thats on you, not the devs.");
+          request(options, function(err, res, body){
+            message.channel.send(message.author+JSON.stringify(body, null, 4));
+          });
         } else{
-        request(options, function(err, res, body){
-          message.channel.send(message.author+JSON.stringify(body, null, 4));
-      });
+          message.channel.send(message.author+"\nCommand you need to know: \n !rssadd: adds new rss link \n !rssmove: shift the updates to another channel \n\n!search: searches for youtube videos\n\n!channel: searches for youtube channels\n\nIf you dont see any response, wait for 5 minutes or you prob typed it wrongly. Thats on you, not the devs.");
+     
     }
         } catch (err) {
       log.command.warning(`help`, message.guild, err)
