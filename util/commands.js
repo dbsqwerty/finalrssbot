@@ -248,15 +248,7 @@ const list = {
       'idk': 'idk'      
     }
   },
-  search: {
-    initLevel: 0,
-    userPerm: SEND_MESSAGES_PERM,
-    description: 'Youtube Search (videos)',
-    args: {
-      'Date': 'optional, add date published filter',
-      'Search': 'search keyword'   
-    }
-  },
+
   channel: {
     initLevel: 0,
     userPerm: SEND_MESSAGES_PERM,
