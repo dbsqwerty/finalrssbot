@@ -6,9 +6,10 @@ const dbOps = require('../util/dbOps.js')
 
 module.exports = async (bot, message) => {
     try {
-        let array1 = message.content.split(" ");
+        let name = message.content.split(" ").slice(1).join(" ")
+        
         var user;
-        if (array1[1]){user = array1[1]}
+        if (name){user = name}
         else {user = "a random person"}
         const items = ["anime girls","heroin","sadness","depression","hentai","debt","all your imaginary friends","ur mum","the biggest fattest vape","donald trump's wall","death","condoms","explosives","a black hole","a chink","ur robot","ur code"]
        const rng = Math.floor(Math.random() * 101);
